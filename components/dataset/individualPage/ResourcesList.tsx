@@ -2,6 +2,7 @@ import { Resource } from "@/schemas/resource.interface";
 import Link from "next/link";
 import { RiDownload2Fill, RiEyeLine } from "react-icons/ri";
 import ResourcesBadges from "../_shared/ResourcesBadges";
+import DownloadAllButton from "@/components/dataset/DownloadAllButton";
 
 interface ResourcesListProps {
   resources: Array<Resource>;
@@ -14,7 +15,12 @@ export default function ResourcesList({
   datasetName,
 }: ResourcesListProps) {
   return (
-    <div className="py-8 w-full max-h-[600px] flex flex-col gap-4 ">
+    <div className="py-8 w-full max-h-[600px] flex flex-col gap-4">
+      {resources.length > 1 && (
+        <div className="flex justify-end">
+          <DownloadAllButton resources={resources} datasetName={datasetName} />
+        </div>
+      )}
       {resources.map((resource: Resource) => (
         <div
           key={resource.id}

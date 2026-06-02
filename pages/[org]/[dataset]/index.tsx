@@ -11,6 +11,7 @@ import styles from "styles/DatasetInfo.module.scss";
 import { getDataset } from "@/lib/queries/dataset";
 import HeroSection from "@/components/_shared/HeroSection";
 import { DatasetPageStructuredData } from "@/components/schema/DatasetPageStructuredData";
+import DatasetApiPanel from "@/components/dataset/DatasetApiPanel";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const ckan = new CKAN(process.env.NEXT_PUBLIC_DMS);
@@ -57,6 +58,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function DatasetPage({ dataset }): JSX.Element {
+  const ckanUrl = process.env.NEXT_PUBLIC_DMS ?? "";
+  const orgName = dataset.organization?.name ?? "";
+
   const tabs = [
     ...(dataset.type != "visualization"
       ? [
@@ -86,6 +90,17 @@ export default function DatasetPage({ dataset }): JSX.Element {
         />
       ),
       title: "Activity Stream",
+    },
+    {
+      id: "api",
+      content: (
+        <DatasetApiPanel
+          ckanUrl={ckanUrl}
+          datasetName={dataset.name}
+          orgName={orgName}
+        />
+      ),
+      title: "API",
     },
   ];
   return (

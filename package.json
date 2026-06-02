@@ -26,6 +26,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.10",
     "clsx": "^2.1.1",
+    "jszip": "^3.10.1",
     "minisearch": "^5.0.0",
     "next": "^13.0.0",
     "next-seo": "^5.5.0",
