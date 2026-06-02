@@ -52,7 +52,7 @@ export async function searchDatasets(options: PackageSearchOptions) {
     fqListGroups.push(`res_format:(${joinTermsWithOr(options.resFormat)})`);
   }
 
-  if (options?.type) {
+  if (options?.type && options.type !== "dataset") {
     fqListGroups.push(`dataset_type:${options.type}`);
   }
 

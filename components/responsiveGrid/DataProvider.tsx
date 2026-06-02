@@ -123,7 +123,7 @@ export const DataStateProvider = ({
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(dataUrl);
+      const response = await fetch(`/api/fetch-resource-data?url=${encodeURIComponent(dataUrl)}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

@@ -15,7 +15,6 @@ import { PackageSearchOptions } from "@portaljs/ckan";
 import { SearchPageStructuredData } from "@/components/schema/SearchPageStructuredData";
 
 export async function getServerSideProps() {
-  // TODO: this doesn't work properly. It must read the params from the URL.
   const initialRequestOption: PackageSearchOptions = {
     offset: 0,
     limit: 10,
@@ -23,6 +22,9 @@ export async function getServerSideProps() {
     groups: [],
     orgs: [],
     resFormat: [],
+    query: "",
+    sort: "score desc",
+    type: "dataset",
   };
 
   const search_result = await searchDatasets(initialRequestOption);

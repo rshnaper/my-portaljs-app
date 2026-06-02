@@ -32,15 +32,15 @@ export default function MainSection({
             icon: <RiSearch2Line width={48} />,
           },
           {
-            title: "Add Data",
-            description: "Make your dataset available on Portal.",
-            href: "#",
+            title: "Explore Topics",
+            description: "Browse data by topic.",
+            href: "/groups",
             icon: <RiUploadCloud2Line width={48} />,
           },
           {
-            title: "Request Data",
-            description: "Send us a request for the data you didn’t find.",
-            href: "#",
+            title: "By Organization",
+            description: "Find data published by specific organizations.",
+            href: "/organizations",
             icon: <RiQuestionnaireLine width={48} />,
           },
         ].map((item, i) => (

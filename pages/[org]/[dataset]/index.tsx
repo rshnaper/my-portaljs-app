@@ -30,11 +30,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         notFound: true,
       };
     }
-    const activityStream = await ckan.getDatasetActivityStream(datasetName);
-    dataset = {
-      ...dataset,
-      activity_stream: activityStream,
-    };
+    let activityStream = [];
+    try {
+      activityStream = await ckan.getDatasetActivityStream(datasetName);
+    } catch {
+      // package_activity_list requires auth in CKAN 2.10+ or may be disabled
+    }
+    dataset = { ...dataset, activity_stream: activityStream };
 
     if (!dataset.organization || "@" + dataset.organization.name !== orgName) {
       return {

@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 import OrgNavCrumbs from "@/components/organization/individualPage/OrgNavCrumbs";
 import OrgInfo from "@/components/organization/individualPage/OrgInfo";
 import ActivityStream from "@/components/_shared/ActivityStream";
@@ -9,7 +8,6 @@ import styles from "styles/DatasetInfo.module.scss";
 import DatasetList from "@/components/_shared/DatasetList";
 import { CKAN } from "@portaljs/ckan";
 import { getOrganization } from "@/lib/queries/orgs";
-import { getDataset } from "@/lib/queries/dataset";
 import { searchDatasets } from "@/lib/queries/dataset";
 
 import HeroSection from "@/components/_shared/HeroSection";
@@ -49,13 +47,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     });
   }
 
-  const activityStream = await ckan.getOrgActivityStream(org.name);
-  if (!org) {
-    return {
-      notFound: true,
-    };
+  let activityStream = [];
+  try {
+    activityStream = await ckan.getOrgActivityStream(org.name);
+  } catch {
+    // organization_activity_list requires auth in CKAN 2.10+ or may be disabled
   }
-  org = { ...org, activity_stream: activityStream};
+  org = { ...org, activity_stream: activityStream };
   return {
     props: {
       org,
