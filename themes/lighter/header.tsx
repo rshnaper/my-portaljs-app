@@ -25,16 +25,15 @@ export default function LighterThemeHeader() {
   }, [router.events]);
 
   return (
-    <header className="bg-transparent ">
+    <header className="bg-transparent">
       <nav
-        className={`mx-auto py-4 flex custom-container items-center justify-between  ${theme.styles.containerWide}`}
-        aria-label="Global"
+        className={`mx-auto py-4 flex custom-container items-center justify-between ${theme.styles.containerWide}`}
+        aria-label="Main navigation"
       >
         <div className="flex items-center gap-x-12">
-          <span className="sr-only">Portal</span>
           {portalLogo ? (
-            <Link href="/">
-              <Image src={portalLogo} alt="logo" height={55} width={55} />
+            <Link href="/" aria-label="Home">
+              <Image src={portalLogo} alt="Portal logo" height={55} width={55} />
             </Link>
           ) : (
             <PortalDefaultLogo />
@@ -44,24 +43,27 @@ export default function LighterThemeHeader() {
             <div className="flex gap-x-8 align-center">
               <Link
                 href="/search"
+                aria-current={router.pathname === "/search" ? "page" : undefined}
                 className={`font-semibold my-auto ${
-                  router.pathname === "/search" ? "text-accent" : ""
+                  router.pathname === "/search" ? "text-accessible-accent" : ""
                 }`}
               >
                 SEARCH
               </Link>
               <Link
                 href="/organizations"
+                aria-current={router.pathname === "/organizations" ? "page" : undefined}
                 className={`font-semibold my-auto ${
-                  router.pathname === "/organizations" ? "text-accent" : ""
+                  router.pathname === "/organizations" ? "text-accessible-accent" : ""
                 }`}
               >
                 ORGANIZATIONS
               </Link>
               <Link
                 href="/groups"
+                aria-current={router.pathname === "/groups" ? "page" : undefined}
                 className={`font-semibold my-auto ${
-                  router.pathname === "/groups" ? "text-accent" : ""
+                  router.pathname === "/groups" ? "text-accessible-accent" : ""
                 }`}
               >
                 GROUPS

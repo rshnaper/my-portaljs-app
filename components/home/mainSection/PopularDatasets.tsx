@@ -22,7 +22,7 @@ export default function PopularDatasets({
         <span className="inline-block font-roboto text-sm text-center pl-2">
           &nbsp; MOST POPULAR DATASETS
         </span>
-        <h1 className="font-inter font-black text-4xl mt-6">Highlights</h1>
+        <h2 className="font-inter font-black text-4xl mt-6">Highlights</h2>
         <div className="flex flex-col">
           {datasets.map((dataset, index) => (
             <Link
@@ -46,7 +46,7 @@ export default function PopularDatasets({
 function DatasetLink({ title, metadata_modified }: DatasetLinkProps) {
   return (
     <div>
-      <h2 className="font-inter font-semibold text-xl">{title}</h2>
+      <h3 className="font-inter font-semibold text-xl">{title}</h3>
       <span className="font-roboto font-light text-[12px] flex items-center gap-1 text-[#1F2633]">
         <svg
           xmlns="http://www.w3.org/2000/svg"

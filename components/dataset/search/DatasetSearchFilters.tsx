@@ -29,19 +29,21 @@ export default function DatasetSearchFilters() {
 
   return (
     <div className="flex flex-col ">
-      <a
-        href="#"
-        className="text-xs flex items-center gap-1 lg:hidden  mb-4"
+      <button
+        type="button"
+        aria-expanded={showFilters}
+        aria-controls="search-filters-panel"
+        className="text-xs flex items-center gap-1 lg:hidden mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#006b65] rounded"
         onClick={() => setShowFilters(!showFilters)}
       >
         {showFilters ? "Hide" : "Show"} Filters
         {showFilters ? (
-          <ChevronUpIcon width={14} />
+          <ChevronUpIcon width={14} aria-hidden="true" />
         ) : (
-          <ChevronDownIcon width={14} />
+          <ChevronDownIcon width={14} aria-hidden="true" />
         )}
-      </a>
-      <div className={` ${showFilters ? "block" : "hidden"} lg:block`}>
+      </button>
+      <div id="search-filters-panel" className={` ${showFilters ? "block" : "hidden"} lg:block`}>
         <FacetCard title="Type">
           <div className="text-[#5F5F5F] space-y-[10px]">
             <DatasetTypeOption

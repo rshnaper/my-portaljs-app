@@ -32,6 +32,8 @@ module.exports = {
         darkaccent: Color(themeColor).darken(0.3).hex(), // Darken by 20%
         darkbrown: "#A75001",
         darkerbrown: "#964800",
+        // Darkened teal (6.4:1 on white) for AA-compliant text on light backgrounds
+        "accessible-accent": "#006b65",
         background: {
           DEFAULT: colors.white,
           dark: colors.slate[900],

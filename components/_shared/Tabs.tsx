@@ -12,7 +12,7 @@ export default function Tabs({ items }: TabProps) {
             <Tab key={item.id}>
               {({ selected }) => (
                 <span
-                  className={`font-semibold text-xs px-6 py-4 focus:outline-0 border-accent ${
+                  className={`font-semibold text-xs px-6 py-4 border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#006b65] rounded-sm ${
                     selected ? "border-b-2" : ""
                   } `}
                 >

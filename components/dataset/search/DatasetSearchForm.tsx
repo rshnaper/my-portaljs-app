@@ -20,7 +20,7 @@ export default function DatasetSearchForm() {
         <input
           type="text"
           placeholder="Type in keyword..."
-          className="mx-4 grow py-3 border-0 placeholder:text-neutral-400 outline-0"
+          className="mx-4 grow py-3 border-0 placeholder:text-neutral-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#006b65] focus-visible:ring-offset-1 rounded"
           name="query"
           value={q}
           onChange={(e) => setQ(e.target.value)}

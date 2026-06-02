@@ -61,9 +61,9 @@ export const MultiCheckbox = ({
         {active && <CheckIcon width={16} />}
         <span className="sr-only">{label}</span>
       </label>
-      <span
-        onClick={select}
-        className="ml-3 text-[#5F5F5F] cursor-pointer flex gap-1 w-full"
+      <label
+        htmlFor={`${name}-${value}`}
+        className="ml-3 text-[#5F5F5F] cursor-pointer flex gap-1 w-full select-none"
       >
         {label}
         {count && (
@@ -71,7 +71,7 @@ export const MultiCheckbox = ({
             {count}
           </span>
         )}
-      </span>
+      </label>
     </div>
   );
 };

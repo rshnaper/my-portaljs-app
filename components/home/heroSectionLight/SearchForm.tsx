@@ -37,10 +37,11 @@ const SearchForm: React.FC = () => {
       />
       <button
         type="submit"
+        aria-label="Search datasets"
         className={`text-lg border-b-[4px] border-accent rounded-[10px] ${styles.bgDark}  uppercase font-medium px-3 py-3 md:px-10 md:py-4 leading-none lg:mt-0 ${styles.textLight} `}
       >
-        <MagnifyingGlassIcon width={24} className="sm:hidden" />
-        <span className="hidden sm:block">Search</span>
+        <MagnifyingGlassIcon width={24} className="sm:hidden" aria-hidden="true" />
+        <span className="hidden sm:block" aria-hidden="true">Search</span>
       </button>
     </form>
   );

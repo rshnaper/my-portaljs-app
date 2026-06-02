@@ -1,7 +1,5 @@
-import React, { FC, ReactNode, useCallback } from "react";
+import React, { FC, ReactNode } from "react";
 import styles from "./styles.module.scss";
-import Particles from "react-particles";
-import { loadSlim } from "tsparticles-slim";
 
 const LigtherTheme = ({
   Header,
@@ -14,116 +12,23 @@ const LigtherTheme = ({
   Footer?: FC;
   children: ReactNode;
 }) => {
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container) => {
-    // await console.log(container);
-  }, []);
-
   return (
-    <>
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={{
-          particles: {
-            destroy: {
-              mode: "split",
-              split: {
-                count: 1,
-                factor: {
-                  value: {
-                    min: 2,
-                    max: 4,
-                  },
-                },
-                rate: {
-                  value: 100,
-                },
-                particles: {
-                  life: {
-                    count: 1,
-                    duration: {
-                      value: {
-                        min: 2,
-                        max: 3,
-                      },
-                    },
-                  },
-                  move: {
-                    speed: {
-                      min: 10,
-                      max: 15,
-                    },
-                  },
-                },
-              },
-            },
-            number: {
-              value: 20,
-            },
-            color: {
-              value: ["#00DEF2", "#6990BE", "#00375F", "#FFB88A"],
-            },
-            shape: {
-              type: "circle",
-            },
-            opacity: {
-              value: 0,
-            },
-            stroke: {
-              width: 1,
-            },
-
-            size: {
-              value: {
-                min: 2,
-                max: 4,
-              },
-            },
-            collisions: {
-              enable: true,
-              mode: "bounce",
-            },
-            move: {
-              enable: true,
-              speed: 1,
-              outModes: "bounce",
-            },
-          },
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: "pop",
-              },
-            },
-          },
-          background: {
-            color: "transparent",
-          },
-        }}
-      />
+    <div className={`${styles.LightTheme} font-inter`}>
       <a
         href="#main-content"
-        className="absolute left-0 top-0 bg-accent text-white py-2 px-4 z-50 transform -translate-y-full focus:translate-y-0 transition"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#006b65] focus:text-white focus:rounded focus:font-semibold focus:shadow-lg"
       >
         Skip to main content
       </a>
-      <div className={` ${styles.LightTheme} font-inter relative`}>
-        {Header && <Header />}
-        <div className="content-wrapper">
-          {Sidebar && <Sidebar />}
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-        </div>
-        {Footer && <Footer />}
+      {Header && <Header />}
+      <div className="content-wrapper">
+        {Sidebar && <Sidebar />}
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
       </div>
-    </>
+      {Footer && <Footer />}
+    </div>
   );
 };
 

@@ -6,11 +6,20 @@
 :root {
   --light-gray: #f7fafc;
   --light-gray-2: #eaeaea;
-  --mid-blue: #0070f3;
-  --accent: hsl(182, 100%, 38%);
+  --mid-blue: #00a199;
+  --accent: #00a199;
+  /* AA-compliant teal for text on white/light backgrounds (6.4:1 contrast) */
+  --accessible-accent: #006b65;
   --indicator-size: 3px;
-  --text-active-color: black;
+  --text-active-color: #212121;
   --queryless-drawer-width: 560px;
+}
+
+/* Global focus ring — never suppress without a visible replacement */
+:focus-visible {
+  outline: 3px solid var(--accessible-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 a {
