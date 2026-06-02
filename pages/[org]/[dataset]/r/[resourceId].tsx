@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import { RiArrowLeftLine } from "react-icons/ri";
 import ResourcesBadges from "@/components/dataset/_shared/ResourcesBadges";
 import { PrimeReactProvider } from "primereact/api";
-import ResponsiveGridData from "@/components/responsiveGrid";
 import { getTimeAgo } from "@/lib/utils";
 import { ResourcePageStructuredData } from "@/components/schema/ResourcePageStructuredData";
+import CsvPreview from "@/components/dataset/CsvPreview";
 
 const PdfViewer = dynamic(
   () => import("@portaljs/components").then((mod) => mod.PdfViewer),
@@ -190,9 +190,9 @@ export default function ResourcePage({
                 <p className="text-stone-500">{resource.description}</p>
               </div>
               <div className="">
-                {resourceFormat == "csv" ? (
-                  <ResponsiveGridData dataUrl={resource.url} />
-                ) : null}
+                {resourceFormat == "csv" && (
+                  <CsvPreview resourceUrl={resource.url} />
+                )}
                 {resourceFormat == "pdf" && (
                   <PdfViewer
                     layout={true}
